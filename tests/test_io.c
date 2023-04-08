@@ -15,19 +15,6 @@
 #define DIR_FILE "./dir"
 #define EMPTY_FILE "./file_EMPTY"
 
-void intToStr(int value) {
-	int k = 0, c;
-	char buff[20];
-	while (value) {
-		c = value % 10;
-		buff[k++] = c + '0';
-		value /= 10;
-	}
-	buff[k] = '\n';
-	write(1, buff, k);
-	write(1, '\n', 1);
-}
-
 static int test_open_non_existent_file(void)
 {
 	int fd;
@@ -110,16 +97,14 @@ static int test_open_read_write_only_mode(void)
 	ssize_t len;
 
 	fd = open(RW_FILE, O_WRONLY);
-	if (fd < 0) {
+	if (fd < 0)
 		return 0;
-	}
 
 	len = read(fd, buff, 10);
 
 	fd = close(fd);
-	if (fd < 0) {
+	if (fd < 0)
 		return 0;
-	}
 
 	return len < 0;
 }
@@ -130,9 +115,8 @@ static int test_open_write_read_only_mode(void)
 	ssize_t len;
 
 	fd = open(RW_FILE, O_RDONLY);
-	if (fd < 0) 
+	if (fd < 0)
 		return 0;
-		
 
 	len = write(fd, "aaa", 3);
 
