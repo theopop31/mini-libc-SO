@@ -1,3 +1,3 @@
-#MINI-LibC implementation
+# MINI-LibC implementation
 
-#Assignment for SO course
+# Assignment for SO course
